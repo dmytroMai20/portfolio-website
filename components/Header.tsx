@@ -1,21 +1,16 @@
-'use client'
-
-import { useState } from 'react'
+import { getPersonalCard } from '../lib/queries'
 import PersonalCard from './PersonalCard'
-import Navigation from './Navigation'
+import HeaderClient from './HeaderClient'
 
-export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+export default async function Header() {
+  const card = await getPersonalCard()
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
+    <header className="bg-card shadow-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-6">
-          <PersonalCard />
-          <Navigation 
-            isMobileMenuOpen={isMobileMenuOpen}
-            setIsMobileMenuOpen={setIsMobileMenuOpen}
-          />
+          {card && <PersonalCard {...card} />}
+          <HeaderClient />
         </div>
       </div>
     </header>

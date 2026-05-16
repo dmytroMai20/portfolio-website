@@ -1,22 +1,20 @@
-export default function AboutSection() {
+import { PortableText, type PortableTextBlock } from 'next-sanity'
+
+export interface AboutSectionProps {
+  heading?: string
+  body?: PortableTextBlock[]
+}
+
+export default function AboutSection({ heading, body }: AboutSectionProps) {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+          <h2 className="text-3xl font-bold text-foreground mb-4">{heading}</h2>
+          <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
-        <div className="max-w-3xl mx-auto">
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Welcome to my portfolio! I'm a passionate professional dedicated to creating innovative solutions 
-            and delivering exceptional results. With a strong background in technology and a keen eye for detail, 
-            I strive to make a meaningful impact through my work.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            My journey has been shaped by continuous learning and a commitment to excellence. I believe in 
-            the power of collaboration and am always excited to take on new challenges that push the boundaries 
-            of what's possible.
-          </p>
+        <div className="max-w-3xl mx-auto prose prose-lg text-muted-foreground">
+          {body && <PortableText value={body} />}
         </div>
       </div>
     </section>

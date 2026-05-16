@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 interface NavigationProps {
   isMobileMenuOpen: boolean
   setIsMobileMenuOpen: (open: boolean) => void
@@ -12,7 +10,6 @@ export default function Navigation({ isMobileMenuOpen, setIsMobileMenuOpen }: Na
     { name: 'About', href: '#about' },
     { name: 'CV', href: '#cv' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
     { name: 'Contact', href: '#contact' }
   ]
 
@@ -24,7 +21,7 @@ export default function Navigation({ isMobileMenuOpen, setIsMobileMenuOpen }: Na
           <a
             key={item.name}
             href={item.href}
-            className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200"
+            className="text-muted-foreground hover:text-foreground px-3 py-2 text-sm font-medium transition-colors duration-200"
           >
             {item.name}
           </a>
@@ -35,7 +32,7 @@ export default function Navigation({ isMobileMenuOpen, setIsMobileMenuOpen }: Na
       <div className="md:hidden">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-gray-700 hover:text-gray-900 p-2"
+          className="text-muted-foreground hover:text-foreground p-2"
           aria-label="Toggle mobile menu"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,13 +47,13 @@ export default function Navigation({ isMobileMenuOpen, setIsMobileMenuOpen }: Na
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50">
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-card border-b border-border shadow-lg z-50">
           <nav className="px-4 py-2 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block text-gray-700 hover:text-gray-900 px-3 py-2 text-base font-medium transition-colors duration-200"
+                className="block text-muted-foreground hover:text-foreground px-3 py-2 text-base font-medium transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
