@@ -1,24 +1,13 @@
-export default function ProjectsSection() {
-  const projects = [
-    {
-      title: "Project One",
-      description: "An innovative solution that addresses complex business challenges through cutting-edge technology and thoughtful design.",
-      technologies: ["React", "TypeScript", "Node.js"],
-      status: "Completed"
-    },
-    {
-      title: "Project Two", 
-      description: "A comprehensive platform designed to streamline workflows and enhance productivity for teams of all sizes.",
-      technologies: ["Next.js", "Tailwind CSS", "PostgreSQL"],
-      status: "In Progress"
-    },
-    {
-      title: "Project Three",
-      description: "Open-source contribution focused on improving developer experience and building community tools.",
-      technologies: ["JavaScript", "Python", "Docker"],
-      status: "Completed"
-    }
-  ]
+import { client } from '../sanity/lib/client'
+
+async function getProjects() {
+  const query = `*[_type == "project"]`
+  const projects = await client.fetch(query)
+  return projects
+}
+
+export default async function ProjectsSection() {
+  const projects = await getProjects()
 
   return (
     <section id="projects" className="py-20 bg-white">
