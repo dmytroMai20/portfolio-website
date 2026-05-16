@@ -1,8 +1,10 @@
+import { defineQuery } from 'next-sanity'
 import { client } from '../sanity/lib/client'
 
+const projectsQuery = defineQuery(`*[_type == "project"]`)
+
 async function getProjects() {
-  const query = `*[_type == "project"]`
-  const projects = await client.fetch(query)
+  const projects = await client.fetch(projectsQuery)
   return projects
 }
 

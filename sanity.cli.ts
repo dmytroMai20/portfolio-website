@@ -1,11 +1,12 @@
-import { defineCliConfig } from '@sanity/cli'
+import { defineCliConfig } from 'sanity/cli'
 
 export default defineCliConfig({
   api: {
     projectId: 'wcqkgv7m',
     dataset: 'production',
   },
-  schema: {
-    path: './.sanity/schema.json',
+  typegen: {
+    generates: 'sanity.types.ts',
+    path: './**/*.{ts,tsx}',
   },
 })
