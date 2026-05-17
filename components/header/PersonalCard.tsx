@@ -18,6 +18,7 @@ export default function PersonalCard({ name, title, email, phone, avatarUrl }: P
                         alt={name ?? ''}
                         width={64}
                         height={64}
+                        priority
                         className="w-16 h-16 rounded-full object-cover"
                     />
                 ) : (

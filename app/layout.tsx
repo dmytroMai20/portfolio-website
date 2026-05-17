@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Header } from '../components/header'
+import ThemeProvider from '../components/ui/ThemeProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -13,10 +14,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground">
-        <Header />
-        <main>{children}</main>
+        <ThemeProvider>
+          <Header />
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,5 +1,5 @@
 import { defineQuery } from 'next-sanity'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 import { client } from '../sanity/lib/client'
 import type {
   AboutQueryResult,
@@ -14,7 +14,7 @@ import type { ContactSectionProps, SocialLink } from '../components/contact'
 import type { PersonalCardProps } from '../components/header'
 import type { Project } from '../components/projects'
 
-const builder = imageUrlBuilder(client)
+const builder = createImageUrlBuilder(client)
 
 export const aboutQuery = defineQuery(`*[_type == "about"][0]`)
 export const cvQuery = defineQuery(`*[_type == "cv"][0]{ experiences, education, "cvFileUrl": cvFile.asset->url }`)
