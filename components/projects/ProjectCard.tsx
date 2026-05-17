@@ -10,7 +10,7 @@ export default function ProjectCard({ title, description, technologies, status }
     <div className="bg-card rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow duration-200">
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-xl font-semibold text-foreground">{title}</h3>
-        <span className={`text-xs px-2 py-1 rounded-full ${
+        <span className={`text-xs px-2 py-1 rounded-full whitespace-nowrap ${
           status === 'Completed'
             ? 'bg-green-100 text-green-800'
             : 'bg-yellow-100 text-yellow-800'

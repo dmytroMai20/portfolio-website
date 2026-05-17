@@ -8,11 +8,11 @@ import type {
   PersonalCardQueryResult,
   ProjectsQueryResult,
 } from '../types/sanity.types'
-import type { AboutSectionProps } from '../components/AboutSection'
-import type { CVSectionProps, Experience, Education } from '../components/CVSection'
-import type { ContactSectionProps } from '../components/ContactSection'
-import type { PersonalCardProps } from '../components/PersonalCard'
-import type { Project } from '../components/ProjectsSection'
+import type { AboutSectionProps } from '../components/about'
+import type { CVSectionProps, Experience, Education } from '../components/cv'
+import type { ContactSectionProps, SocialLink } from '../components/contact'
+import type { PersonalCardProps } from '../components/header'
+import type { Project } from '../components/projects'
 
 const builder = imageUrlBuilder(client)
 
@@ -71,6 +71,9 @@ export async function getContact(): Promise<ContactSectionProps | null> {
       email: result.email,
       phone: result.phone,
       location: result.location,
+      socials: result.socials
+        ?.filter((s): s is typeof s & { platform: string; url: string } => !!s.platform && !!s.url)
+        .map((s): SocialLink => ({ platform: s.platform, url: s.url })),
     }
   } catch {
     return null

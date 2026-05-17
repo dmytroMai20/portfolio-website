@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export interface PersonalCardProps {
     name?: string | null
     title?: string | null
@@ -11,9 +13,11 @@ export default function PersonalCard({ name, title, email, phone, avatarUrl }: P
         <div className="flex items-center space-x-4">
             <div className="relative">
                 {avatarUrl ? (
-                    <img
+                    <Image
                         src={avatarUrl}
                         alt={name ?? ''}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 rounded-full object-cover"
                     />
                 ) : (

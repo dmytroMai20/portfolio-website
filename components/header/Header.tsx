@@ -1,4 +1,4 @@
-import { getPersonalCard } from '../lib/queries'
+import { getPersonalCard } from '../../lib/queries'
 import PersonalCard from './PersonalCard'
 import HeaderClient from './HeaderClient'
 

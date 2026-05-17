@@ -1,12 +1,20 @@
+import ContactForm from './ContactForm'
+
+export interface SocialLink {
+  platform: string
+  url: string
+}
+
 export interface ContactSectionProps {
   heading?: string
   description?: string
   email?: string
   phone?: string
   location?: string
+  socials?: SocialLink[]
 }
 
-export default function ContactSection({ heading, description, email, phone, location }: ContactSectionProps) {
+export default function ContactSection({ heading, description, email, phone, location, socials }: ContactSectionProps) {
   return (
     <section id="contact" className="py-20 bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,58 +73,34 @@ export default function ContactSection({ heading, description, email, phone, loc
                     </div>
                   </div>
                 )}
+
+                {socials && socials.length > 0 && (
+                  <div className="pt-4 mt-4 border-t border-border">
+                    <p className="text-sm text-muted-foreground mb-3">Find me online</p>
+                    <div className="flex gap-3">
+                      {socials.map((social) => (
+                        <a
+                          key={social.platform}
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+                        >
+                          {social.platform}
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             
             <div className="bg-card p-8 rounded-lg border border-border">
               <h3 className="text-xl font-semibold text-foreground mb-6">Send a Message</h3>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
-                    placeholder="Your Name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
-                    placeholder="Your message here..."
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:opacity-90 transition-colors duration-200"
-                >
-                  Send Message
-                </button>
-              </form>
+              <ContactForm recipientEmail={email} />
             </div>
           </div>
         </div>
