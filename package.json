@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "sanity:schema": "sanity schema extract",
-    "sanity:typegen": "sanity typegen generate --schema .sanity/schema.json --output types/sanity.ts"
+    "sanity:typegen": "sanity typegen generate"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
@@ -17,7 +17,10 @@
     "next-sanity": "^12.4.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "sanity": "^3.99.0"
+    "sanity": "^5.25.1",
+    "styled-components": "^6.4.1",
+    "next-themes": "^0.4.6",
+    "motion": "^12.15.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
