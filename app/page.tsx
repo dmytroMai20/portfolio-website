@@ -15,8 +15,22 @@ export default async function Page() {
     getContact(),
   ])
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Dmytro Mai',
+    jobTitle: 'Software Engineer',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://dmytromai.com',
+    email: contact?.email,
+    knowsAbout: ['TypeScript', 'React', 'Next.js', 'Node.js', 'C++', 'Multithreading', 'Performance Optimization', 'System Design', 'Cache-aware Design'],
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AnimatedSection>
         {about && <AboutSection {...about} />}
       </AnimatedSection>

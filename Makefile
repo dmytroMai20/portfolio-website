@@ -1,4 +1,4 @@
-.PHONY: gen studio
+.PHONY: gen studio test
 
 gen:
 	pnpm dlx sanity schema extract
@@ -6,3 +6,6 @@ gen:
 
 studio:
 	pnpm sanity dev
+
+test:
+	pnpm exec playwright test
