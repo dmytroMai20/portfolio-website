@@ -54,7 +54,7 @@ export default function OGImage() {
               marginTop: '20px',
             }}
           >
-            {['Next.js', 'React', 'TypeScript', 'Node.js'].map((tech) => (
+            {['C++', 'Python', 'TypeScript', 'Node.js'].map((tech) => (
               <div
                 key={tech}
                 style={{
